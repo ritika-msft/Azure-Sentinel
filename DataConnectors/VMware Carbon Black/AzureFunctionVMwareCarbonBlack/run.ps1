@@ -188,14 +188,15 @@ function CarbonBlackAPI()
     $AWSAccessKeyId = $env:AWSAccessKeyId
     $AWSSecretAccessKey = $env:AWSSecretAccessKey
 
-    $startTime = [System.DateTime]::UtcNow.AddMinutes(-$($time))
-    $now = [System.DateTime]::UtcNow
-
     #setting default time interval if value is not provided
     if($time -eq "[basics('SIEMAPICredentials').TimeInterval")
     {
         $time = 5
     }
+
+    $startTime = [System.DateTime]::UtcNow.AddMinutes(-$($time))
+    $now = [System.DateTime]::UtcNow
+
 
     # Remove if addition slash or space added in hostName
     $hostName = $hostName.Trim() -replace "[.*/]$",""
@@ -281,7 +282,7 @@ function CarbonBlackAPI()
 
     if($LogTypeArr -contains "alert")
     {
-        if($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
+        if($SIEMapiKey -eq "[basics('SIEMAPICredentials').SIEMAPIKey" -or $SIEMapiId -eq "[basics('SIEMAPICredentials').SIEMAPIId"  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {   
             $alerts = GetBucketDetails -s3BucketName $s3BucketName -prefixFolder $AlertprefixFolder -tableName $NotificationTable
             Write-Host "$($alerts) found and pushed."   
