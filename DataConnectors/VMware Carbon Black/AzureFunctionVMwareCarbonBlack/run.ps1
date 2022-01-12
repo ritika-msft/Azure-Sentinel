@@ -191,6 +191,12 @@ function CarbonBlackAPI()
     $startTime = [System.DateTime]::UtcNow.AddMinutes(-$($time))
     $now = [System.DateTime]::UtcNow
 
+    #setting default time interval if value is not provided
+    if($time -eq "[basics('SIEMAPICredentials').TimeInterval")
+    {
+        $time = 5
+    }
+
     # Remove if addition slash or space added in hostName
     $hostName = $hostName.Trim() -replace "[.*/]$",""
 
@@ -213,7 +219,7 @@ function CarbonBlackAPI()
     #Converting LogType to array
     if([string]::IsNullOrWhiteSpace($LogType))
     {
-        if (-not([string]::IsNullOrWhiteSpace($SIEMapiKey)) -and -not([string]::IsNullOrWhiteSpace($SIEMapiId)))
+        if ($SIEMapiKey -eq "[basics('SIEMAPICredentials').SIEMAPIKey" -or $SIEMapiId -eq "[basics('SIEMAPICredentials').SIEMAPIId")
         {
             $logType = @("event","audit","alert")
         }
