@@ -183,7 +183,6 @@ function CarbonBlackAPI()
     $NotificationTable  = "CarbonBlackNotifications"
     $OrgKey = $env:CarbonBlackOrgKey
     $s3BucketName = $env:s3BucketName
-    #$prefixFolder = $env:s3BucketPrefixFolder
     $EventprefixFolder = "carbon-black-events"
     $AlertprefixFolder = "carbon-black-alerts"
     $AWSAccessKeyId = $env:AWSAccessKeyId
@@ -212,7 +211,17 @@ function CarbonBlackAPI()
     }
 
     #Converting LogType to array
-    $LogTypeArr = $LogType -split ','
+    if([string]::IsNullOrWhiteSpace($LogType))
+    {
+        if (-not([string]::IsNullOrWhiteSpace($SIEMapiKey)) -and -not([string]::IsNullOrWhiteSpace($SIEMapiId)))
+        {
+            $logType = @("event","audit","alert")
+        }
+        else{
+            $logType = @("event","audit")
+        }
+    }
+    #$LogTypeArr = $LogType -split ','
 
     if(-not([string]::IsNullOrWhiteSpace($apiId)) -and -not([string]::IsNullOrWhiteSpace($apiSecretKey)) -and -not([string]::IsNullOrWhiteSpace($hostName)))
     {
