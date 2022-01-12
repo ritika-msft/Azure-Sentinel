@@ -100,7 +100,7 @@
       "variables": {
            "FunctionName": "[concat(toLower(parameters('FunctionName')), uniqueString(resourceGroup().id))]",
            "StorageSuffix":"[environment().suffixes.storage]",
-           "logTypes":"[substring(string(parameters('CarbonBlackLogTypes')), '1', sub(length(parameters('CarbonBlackLogTypes')), 1)]",
+           "logTypes": "[substring(string(parameters('CarbonBlackLogTypes')),1,sub(length(parameters('CarbonBlackLogTypes')), 1))]",
            "LogAnaltyicsUri":"[replace(environment().portal, 'https://portal', concat('https://', toLower(parameters('WorkspaceID')), '.ods.opinsights'))]"
       },
       "resources": [
