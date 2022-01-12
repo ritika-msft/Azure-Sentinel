@@ -221,7 +221,7 @@ function CarbonBlackAPI()
             $logType = @("event","audit")
         }
     }
-    #$LogTypeArr = $LogType -split ','
+    $LogTypeArr = $LogType -split ','
 
     if(-not([string]::IsNullOrWhiteSpace($apiId)) -and -not([string]::IsNullOrWhiteSpace($apiSecretKey)) -and -not([string]::IsNullOrWhiteSpace($hostName)))
     {
