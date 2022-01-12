@@ -138,7 +138,7 @@
 						"type": "Microsoft.Common.TextBox",
 						"label": "SIEM API Key",
 						"toolTip": "SIEM API Key",
-						"defaultValue": "",
+						"defaultValue": null,
 						"constraints": {
 							"required": "[and(contains(basics('LogTypes'),'alert'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
@@ -148,7 +148,7 @@
 						"type": "Microsoft.Common.TextBox",
 						"label": "SIEM API Id",
 						"toolTip": "SIEM API Id",
-						"defaultValue": "",
+						"defaultValue": null,
 						"constraints": {
 							"required": "[and(contains(basics('LogTypes'),'alert'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
