@@ -252,8 +252,7 @@
                           "CarbonBlackOrgKey":"[parameters('CarbonBlackOrgKey')]",
                           "s3BucketName":"[parameters('s3BucketName')]",
                           "AWSAccessKeyId":"[parameters('AWSAccessKeyId')]",
-                          "AWSSecretAccessKey":"[parameters('AWSSecretAccessKey')]",
-                          "CarbonBlackLogTypes": "[parameters('CarbonBlackLogTypes')]"
+                          "AWSSecretAccessKey":"[parameters('AWSSecretAccessKey')]"
                         } 
                   }
               ]
