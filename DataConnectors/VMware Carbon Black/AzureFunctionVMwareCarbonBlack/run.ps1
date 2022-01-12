@@ -228,7 +228,8 @@ function CarbonBlackAPI()
             $logType = @("event","audit")
         }
     }
-    $logType = $logType.Trim("[]")
+    $logType = $LogType.Substring(1,$LogType.Length-2)
+    Write-Host $logType
     $LogTypeArr = $LogType -split ','
 
     if(-not([string]::IsNullOrWhiteSpace($apiId)) -and -not([string]::IsNullOrWhiteSpace($apiSecretKey)) -and -not([string]::IsNullOrWhiteSpace($hostName)))
