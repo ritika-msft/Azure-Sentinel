@@ -18,7 +18,11 @@
           },
           "CarbonBlackLogTypes": {
             "type": "array",
-            "defaultValue": "event",
+            "defaultValue": [
+                "event",
+                "alert",
+                "audit"
+              ],
             "allowedValues": [
                 "event",
                 "alert",
@@ -254,7 +258,7 @@
                           "s3BucketName":"[parameters('s3BucketName')]",
                           "AWSAccessKeyId":"[parameters('AWSAccessKeyId')]",
                           "AWSSecretAccessKey":"[parameters('AWSSecretAccessKey')]",
-                          "CarbonBlackLogTypes": "[variables('logTypes')]"
+                          "CarbonBlackLogTypes": "[parameters('CarbonBlackLogTypes')]"
                         } 
                   }
               ]
