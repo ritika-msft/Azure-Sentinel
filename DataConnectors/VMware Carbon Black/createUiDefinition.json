@@ -108,7 +108,7 @@
 						"toolTip": "API Key is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "<apiKey>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -118,7 +118,7 @@
 						"toolTip": "API Id is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "<apiId>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -128,7 +128,7 @@
 						"toolTip": "Uri is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "https://<API URL>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					}
 				]
@@ -145,7 +145,7 @@
 						"toolTip": "SIEMApiKey is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					},
 					{
@@ -155,7 +155,7 @@
 						"toolTip": "SIEMApiId is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					},
 					{
@@ -165,7 +165,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					}
 				]
