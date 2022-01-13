@@ -62,9 +62,9 @@
 				"label": "Log Types",
 				"placeholder": "",
 				"defaultValue": "event",
-				"toolTip": "",
+				"toolTip": "<b>Event logs:</b> Supported with AWS S3 <br/><b>Notification (alerts) logs:</b> Supported with SIEM API or AWS S3<br/><b>Audit logs:</b> Supported with API",
 				"multiselect": true,
-				"selectAll": true,
+				"selectAll": false,
 				"filter": true,
 				"filterPlaceholder": "Filter items ...",
 				"multiLine": true,
@@ -73,17 +73,22 @@
 					"allowedValues": [
 						{
 							"label": "event",
-							"description": "Supported with AWS S3",
+							"description": "Supported with AWS S3 Bucket Credentials",
 							"value": "event"
 						},
 						{
 							"label": "audit",
-							"description": "Supported with API",
+							"description": "Supported with API Credentials",
 							"value": "audit"
 						},
 						{
-							"label": "alert",
-							"description": "Supported with SIEM API or AWS S3",
+							"label": "alert with SIEM API",
+							"description": "Supported with SIEM API Credentials",
+							"value": "alert"
+						},
+						{
+							"label": "alert with AWS S3",
+							"description": "Supported with AWS S3 Bucket Credentials",
 							"value": "alert"
 						}
 					],
@@ -100,7 +105,7 @@
 						"name": "APIKey",
 						"type": "Microsoft.Common.TextBox",
 						"label": "API Key",
-						"toolTip": "API Key",
+						"toolTip": "API Key is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "<apiKey>",
 						"constraints": {
 							"required": "[contains(basics('LogTypes'),'audit')]"
@@ -110,7 +115,7 @@
 						"name": "APIId",
 						"type": "Microsoft.Common.TextBox",
 						"label": "API Id",
-						"toolTip": "API Id",
+						"toolTip": "API Id is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "<apiId>",
 						"constraints": {
 							"required": "[contains(basics('LogTypes'),'audit')]"
@@ -120,7 +125,7 @@
 						"name": "URI",
 						"type": "Microsoft.Common.TextBox",
 						"label": "Uri",
-						"toolTip": "Uri",
+						"toolTip": "Uri is a required parameter if you have selected audit as one of the option for Log Types.",
 						"defaultValue": "https://<API URL>",
 						"constraints": {
 							"required": "[contains(basics('LogTypes'),'audit')]"
@@ -137,20 +142,20 @@
 						"name": "SIEMAPIKey",
 						"type": "Microsoft.Common.TextBox",
 						"label": "SIEM API Key",
-						"toolTip": "SIEM API Key",
+						"toolTip": "SIEMApiKey is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					},
 					{
 						"name": "SIEMAPIId",
 						"type": "Microsoft.Common.TextBox",
 						"label": "SIEM API Id",
-						"toolTip": "SIEM API Id",
+						"toolTip": "SIEMApiId is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					},
 					{
@@ -160,7 +165,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					}
 				]
@@ -174,32 +179,36 @@
 						"name": "CarbonBlackOrgKey",
 						"type": "Microsoft.Common.TextBox",
 						"label": "Carbon Black Org Key",
+						"toolTip": "CarbonBlackOrgKey is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
 						"name": "s3BucketName",
 						"type": "Microsoft.Common.TextBox",
 						"label": "S3 Bucket Name",
+						"toolTip": "s3BucketName is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
 						"name": "AWSAccessKeyId",
 						"type": "Microsoft.Common.TextBox",
 						"label": "AWS Access Key Id",
+						"toolTip": "AWSAccessKeyId is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
 						"name": "AWSSecretAccessKey",
 						"type": "Microsoft.Common.TextBox",
 						"label": "AWS Secret Access Key",
+						"toolTip": "AWSSecretAccessKey is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					}
 				],
