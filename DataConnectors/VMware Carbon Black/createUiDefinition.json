@@ -84,12 +84,12 @@
 						{
 							"label": "alertSIEMAPI",
 							"description": "Supported with SIEM API Credentials",
-							"value": "alert"
+							"value": "alertSIEMAPI"
 						},
 						{
 							"label": "alertAWSS3",
 							"description": "Supported with AWS S3 Bucket Credentials",
-							"value": "alert"
+							"value": "alertAWSS3"
 						}
 					],
 					"required": true
