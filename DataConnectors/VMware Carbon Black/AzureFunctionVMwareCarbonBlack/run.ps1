@@ -184,7 +184,7 @@ function CarbonBlackAPI()
     $OrgKey = $env:CarbonBlackOrgKey
     $s3BucketName = $env:s3BucketName
     $EventprefixFolder = $env:EventPrefixFolderName
-    $AlertprefixFolder = $envAlertPrefixFolderName
+    $AlertprefixFolder = $env:AlertPrefixFolderName
     $AWSAccessKeyId = $env:AWSAccessKeyId
     $AWSSecretAccessKey = $env:AWSSecretAccessKey
 
