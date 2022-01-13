@@ -212,6 +212,26 @@
 						"constraints": {
 							"required": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 						}
+					},
+					{
+						"name": "EventPrefixFolderName",
+						"type": "Microsoft.Common.TextBox",
+						"label": "Event Prefix Folder Name",
+						"toolTip": "S3 bucket prefix folder name for event logs",
+						"constraints": {
+							"required": "[contains(basics('LogTypes'),'event')]"
+						},
+						"visible": "[contains(basics('LogTypes'),'event')]"
+					},
+					{
+						"name": "AlertPrefixFolderName",
+						"type": "Microsoft.Common.TextBox",
+						"label": "Alert Prefix Folder Name",
+						"toolTip": "S3 bucket prefix folder name for alert logs",
+						"constraints": {
+							"required": "[contains(basics('LogTypes'),'alertAWSS3')]"
+						},
+						"visible": "[contains(basics('LogTypes'),'alertAWSS3')]"
 					}
 				],
 				"visible": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
@@ -232,7 +252,9 @@
 			"CarbonBlackOrgKey": "[basics('S3BucketCredentials').CarbonBlackOrgKey]",
 			"s3BucketName": "[basics('S3BucketCredentials').s3BucketName]",
 			"AWSAccessKeyId": "[basics('S3BucketCredentials').AWSAccessKeyId]",
-			"AWSSecretAccessKey": "[basics('S3BucketCredentials').AWSSecretAccessKey]"
+			"AWSSecretAccessKey": "[basics('S3BucketCredentials').AWSSecretAccessKey]",
+			"AlertPrefixFolderName": "[basics('S3BucketCredentials').AlertPrefixFolderName]",
+			"EventPrefixFolderName": "[basics('S3BucketCredentials').EventPrefixFolderName]"
 		}
 	}
 }

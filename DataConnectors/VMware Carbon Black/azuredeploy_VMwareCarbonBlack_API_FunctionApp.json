@@ -95,7 +95,21 @@
               "metadata": {
                 "description": "AWSSecretAccessKey is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types."
               }
-          }
+          },
+          "EventPrefixFolderName": {
+            "type": "string",
+            "defaultValue": "<EventPrefixFolderName>",
+            "metadata": {
+              "description": "S3 bucket prefix folder name for event logs"
+            }
+          },
+          "AlertPrefixFolderName": {
+            "type": "string",
+            "defaultValue": "<AlertPrefixFolderName>",
+            "metadata": {
+              "description": "S3 bucket prefix folder name for alert logs"
+            }
+        }
       },
       "variables": {
            "FunctionName": "[concat(toLower(parameters('FunctionName')), uniqueString(resourceGroup().id))]",
