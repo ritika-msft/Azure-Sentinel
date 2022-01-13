@@ -82,14 +82,14 @@
 							"value": "audit"
 						},
 						{
-							"label": "alert with SIEM API",
+							"label": "alertSIEMAPI",
 							"description": "Supported with SIEM API Credentials",
-							"value": "alert with SIEM API"
+							"value": "alertSIEMAPI"
 						},
 						{
-							"label": "alert with AWS S3",
+							"label": "alertAWSS3",
 							"description": "Supported with AWS S3 Bucket Credentials",
-							"value": "alert with AWS S3"
+							"value": "alertAWSS3"
 						}
 					],
 					"required": true
