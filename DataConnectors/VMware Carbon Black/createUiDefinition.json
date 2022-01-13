@@ -134,7 +134,6 @@
 				]
 			},
 			{
-				"condition": "[contains(basics('LogTypes'),'alertSIEMAPI')]",
 				"name": "SIEMAPICredentials",
 				"type": "Microsoft.Common.Section",
 				"label": "SIEM API Credentials",
@@ -169,7 +168,8 @@
 							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					}
-				]
+				],
+				"visible": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 			},
 			{
 				"name": "S3BucketCredentials",
