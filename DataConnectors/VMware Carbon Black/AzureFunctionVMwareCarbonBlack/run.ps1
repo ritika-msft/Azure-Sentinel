@@ -216,10 +216,10 @@ function CarbonBlackAPI()
     {
         if ($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {
-            $LogTypeArr = @("event","audit","alert")
+            $LogTypeArr = @("event","audit")
         }
         else{
-            $LogTypeArr = @("event","audit")
+            $LogTypeArr = @("event","audit","alertSIEMAPI")
         }
     }else {
         $logType = $LogType.Substring(1,$LogType.Length-2)
@@ -279,7 +279,7 @@ function CarbonBlackAPI()
     }
 
 
-    if($LogTypeArr -contains "alert")
+    if($LogTypeArr -contains "alertSIEMAPI" -or $LogTypeArr -contains "alertAWSS3")
     {
         if($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {

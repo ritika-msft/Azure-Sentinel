@@ -72,22 +72,22 @@
 				"constraints": {
 					"allowedValues": [
 						{
-							"label": "event",
+							"label": "Event",
 							"description": "Supported with AWS S3 Bucket Credentials",
 							"value": "event"
 						},
 						{
-							"label": "audit",
+							"label": "Audit",
 							"description": "Supported with API Credentials",
 							"value": "audit"
 						},
 						{
-							"label": "alertSIEMAPI",
+							"label": "Alert",
 							"description": "Supported with SIEM API Credentials",
 							"value": "alertSIEMAPI"
 						},
 						{
-							"label": "alertAWSS3",
+							"label": "Alert",
 							"description": "Supported with AWS S3 Bucket Credentials",
 							"value": "alertAWSS3"
 						}
