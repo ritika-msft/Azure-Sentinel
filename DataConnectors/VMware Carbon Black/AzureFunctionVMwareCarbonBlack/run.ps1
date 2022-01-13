@@ -216,15 +216,16 @@ function CarbonBlackAPI()
     {
         if ($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {
-            $logType = @("event","audit","alert")
+            $LogTypeArr = @("event","audit","alert")
         }
         else{
-            $logType = @("event","audit")
+            $LogTypeArr = @("event","audit")
         }
     }else {
         $logType = $LogType.Substring(1,$LogType.Length-2)
         Write-Host $logType
-        Write-Host $logType.GetType()
+        $logType = $logType -replace """",""
+        Write-Host $logType
         $LogTypeArr = $LogType -split ','
         Write-Host $LogTypeArr
     }
