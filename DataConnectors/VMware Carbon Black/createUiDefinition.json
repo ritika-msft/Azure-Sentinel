@@ -84,12 +84,12 @@
 						{
 							"label": "alertSIEMAPI",
 							"description": "Supported with SIEM API Credentials",
-							"value": "alertSIEMAPI"
+							"value": "alert"
 						},
 						{
 							"label": "alertAWSS3",
 							"description": "Supported with AWS S3 Bucket Credentials",
-							"value": "alertAWSS3"
+							"value": "alert"
 						}
 					],
 					"required": true
@@ -131,7 +131,8 @@
 							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					}
-				]
+				],
+				"visible": "[contains(basics('LogTypes'),'audit')]"
 			},
 			{
 				"name": "SIEMAPICredentials",
@@ -213,7 +214,7 @@
 						}
 					}
 				],
-				"visible": true
+				"visible": "[or(contains(basics('LogTypes'),'event'),contains(basics('LogTypes'),'alertAWSS3'))] "
 			}
 		],
 		"steps": [],
