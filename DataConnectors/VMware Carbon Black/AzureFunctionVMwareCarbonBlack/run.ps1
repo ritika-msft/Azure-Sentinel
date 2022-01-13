@@ -223,11 +223,8 @@ function CarbonBlackAPI()
         }
     }else {
         $logType = $LogType.Substring(1,$LogType.Length-2)
-        Write-Host $logType
         $logType = $logType -replace """",""
-        Write-Host $logType
         $LogTypeArr = $LogType -split ','
-        Write-Host $LogTypeArr
     }
     
 
@@ -286,8 +283,11 @@ function CarbonBlackAPI()
     {
         if($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {
-            $alerts = GetBucketDetails -s3BucketName $s3BucketName -prefixFolder $AlertprefixFolder -tableName $NotificationTable
-            Write-Host "$($alerts) found and pushed."
+            if(-not([string]::IsNullOrWhiteSpace($s3BucketName)) -and -not([string]::IsNullOrWhiteSpace($AWSAccessKeyId)) -and -not([string]::IsNullOrWhiteSpace($AWSSecretAccessKey)) -and -not([string]::IsNullOrWhiteSpace($OrgKey)))
+            {
+                $alerts = GetBucketDetails -s3BucketName $s3BucketName -prefixFolder $AlertprefixFolder -tableName $NotificationTable
+                Write-Host "$($alerts.count) new Carbon Black Alerts as of $([DateTime]::UtcNow)were found and pushed."
+            }
         }
         elseif(-not([string]::IsNullOrWhiteSpace($SIEMapiKey)) -and -not([string]::IsNullOrWhiteSpace($SIEMapiId)))
         {
