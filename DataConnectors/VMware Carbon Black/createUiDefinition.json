@@ -183,7 +183,7 @@
 						"label": "Carbon Black Org Key",
 						"toolTip": "CarbonBlackOrgKey is a required parameter if you have selected <b>event</b> or <b>alertAWSS3</b> as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 						}
 					},
 					{
@@ -192,7 +192,7 @@
 						"label": "S3 Bucket Name",
 						"toolTip": "s3BucketName is a required parameter if you have selected <b>event</b> or <b>alertAWSS3</b> as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 						}
 					},
 					{
@@ -201,7 +201,7 @@
 						"label": "AWS Access Key Id",
 						"toolTip": "AWSAccessKeyId is a required parameter if you have selected <b>event</b> or <b>alertAWSS3</b> as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 						}
 					},
 					{
