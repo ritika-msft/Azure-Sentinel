@@ -105,30 +105,30 @@
 						"name": "APIKey",
 						"type": "Microsoft.Common.TextBox",
 						"label": "API Key",
-						"toolTip": "API Key is a required parameter if you have selected audit as one of the option for Log Types.",
+						"toolTip": "API Key",
 						"defaultValue": "<apiKey>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					},
 					{
 						"name": "APIId",
 						"type": "Microsoft.Common.TextBox",
 						"label": "API Id",
-						"toolTip": "API Id is a required parameter if you have selected audit as one of the option for Log Types.",
+						"toolTip": "API Id",
 						"defaultValue": "<apiId>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					},
 					{
 						"name": "URI",
 						"type": "Microsoft.Common.TextBox",
 						"label": "Uri",
-						"toolTip": "Uri is a required parameter if you have selected audit as one of the option for Log Types.",
+						"toolTip": "Uri",
 						"defaultValue": "https://<API URL>",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'audit')]"
 						}
 					}
 				]
@@ -145,7 +145,7 @@
 						"toolTip": "SIEMApiKey is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -155,7 +155,7 @@
 						"toolTip": "SIEMApiId is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -165,7 +165,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'audit')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					}
 				]
