@@ -84,12 +84,12 @@
 						{
 							"label": "alertSIEMAPI",
 							"description": "Supported with SIEM API Credentials",
-							"value": "alert"
+							"value": "alertSIEMAPI"
 						},
 						{
 							"label": "alertAWSS3",
 							"description": "Supported with AWS S3 Bucket Credentials",
-							"value": "alert"
+							"value": "alertAWSS3"
 						}
 					],
 					"required": true
@@ -145,7 +145,7 @@
 						"toolTip": "SIEMApiKey is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
 						}
 					},
 					{
@@ -155,7 +155,7 @@
 						"toolTip": "SIEMApiId is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
 						}
 					},
 					{
@@ -165,7 +165,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[contains(basics('alertSIEMAPI'),'audit')]"
 						}
 					}
 				]
