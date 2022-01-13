@@ -18,15 +18,12 @@
           },
           "CarbonBlackLogTypes": {
             "type": "array",
-            "defaultValue": [
-                "event",
-                "alert",
-                "audit"
-              ],
+            "defaultValue": "event",
             "allowedValues": [
                 "event",
-                "alert",
-                "audit"
+                "audit",
+                "alertSIEMAPI",
+                "alertAWSS3"
               ],
               "metadata": {
                 "description": "Event logs are supported with AWS S3 , Notification (alerts) logs are supported with SIEM API or AWS S3, Audit logs are supported with API."
