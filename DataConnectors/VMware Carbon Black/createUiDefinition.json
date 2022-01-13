@@ -84,12 +84,12 @@
 						{
 							"label": "alertSIEMAPI",
 							"description": "Supported with SIEM API Credentials",
-							"value": "alertSIEMAPI"
+							"value": "alert"
 						},
 						{
 							"label": "alertAWSS3",
 							"description": "Supported with AWS S3 Bucket Credentials",
-							"value": "alertAWSS3"
+							"value": "alert"
 						}
 					],
 					"required": true
@@ -145,7 +145,7 @@
 						"toolTip": "SIEMApiKey is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					},
 					{
@@ -155,7 +155,7 @@
 						"toolTip": "SIEMApiId is a required parameter if you have selected [alert with SIEM API] as one of the option for Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					},
 					{
@@ -165,7 +165,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[and(contains(basics('LogTypes'),'alert with SIEM API'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
+							"required": "[and(contains(basics('LogTypes'),'alertSIEMAPI'), or(equals(basics('S3BucketCredentials').s3BucketName,''),equals(basics('S3BucketCredentials').AWSAccessKeyId,''),equals(basics('S3BucketCredentials').AWSSecretAccessKey,'')))]"
 						}
 					}
 				]
@@ -181,7 +181,7 @@
 						"label": "Carbon Black Org Key",
 						"toolTip": "CarbonBlackOrgKey is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
@@ -190,7 +190,7 @@
 						"label": "S3 Bucket Name",
 						"toolTip": "s3BucketName is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
@@ -199,7 +199,7 @@
 						"label": "AWS Access Key Id",
 						"toolTip": "AWSAccessKeyId is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					},
 					{
@@ -208,7 +208,7 @@
 						"label": "AWS Secret Access Key",
 						"toolTip": "AWSSecretAccessKey is a required parameter if you have selected event or [alert with AWS S3] as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alert with AWS S3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
 						}
 					}
 				],
