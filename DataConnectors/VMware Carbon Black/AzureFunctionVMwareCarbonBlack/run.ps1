@@ -224,7 +224,9 @@ function CarbonBlackAPI()
     }else {
         $logType = $LogType.Substring(1,$LogType.Length-2)
         Write-Host $logType
+        Write-Host $logType.GetType()
         $LogTypeArr = $LogType -split ','
+        Write-Host $LogTypeArr
     }
     
 
