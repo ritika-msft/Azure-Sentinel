@@ -210,11 +210,11 @@
 						"label": "AWS Secret Access Key",
 						"toolTip": "AWSSecretAccessKey is a required parameter if you have selected <b>event</b> or <b>alertAWSS3</b> as one of the Log Types",
 						"constraints": {
-							"required": "[or(contains(basics('LogTypes'),'event'), and(contains(basics('LogTypes'),'alertAWSS3'),or(equals(basics('SIEMAPICredentials').SIEMAPIKey,''),equals(basics('SIEMAPICredentials').SIEMAPIId,''))))]"
+							"required": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 						}
 					}
 				],
-				"visible": "[or(contains(basics('LogTypes'),'event'),contains(basics('LogTypes'),'alertAWSS3'))] "
+				"visible": "[or(contains(basics('LogTypes'),'event'), contains(basics('LogTypes'),'alertAWSS3'))]"
 			}
 		],
 		"steps": [],
