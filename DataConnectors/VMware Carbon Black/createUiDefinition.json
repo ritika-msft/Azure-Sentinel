@@ -134,6 +134,7 @@
 				]
 			},
 			{
+				"condition": "[contains(basics('LogTypes'),'alertSIEMAPI')]",
 				"name": "SIEMAPICredentials",
 				"type": "Microsoft.Common.Section",
 				"label": "SIEM API Credentials",
@@ -145,8 +146,7 @@
 						"toolTip": "SIEMApiKey is a required parameter if you have selected <b>alertSIEMAPI</b> as one of the Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]",
-							"visible" : "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -156,8 +156,7 @@
 						"toolTip": "SIEMApiId is a required parameter if you have selected <b>alertSIEMAPI</b> as one of the Log Types",
 						"defaultValue": null,
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]",
-							"visible" : "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					},
 					{
@@ -167,8 +166,7 @@
 						"toolTip": "Time Interval",
 						"defaultValue": "5",
 						"constraints": {
-							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]",
-							"visible" : "[contains(basics('LogTypes'),'alertSIEMAPI')]"
+							"required": "[contains(basics('LogTypes'),'alertSIEMAPI')]"
 						}
 					}
 				]
