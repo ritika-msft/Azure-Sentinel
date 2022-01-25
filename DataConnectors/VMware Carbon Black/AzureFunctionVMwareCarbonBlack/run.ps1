@@ -1,5 +1,5 @@
 <#
-    Title:          VMware Carbon Black Cloud - Endpoint Standard Data Connector
+    Title:          VMware Carbon Black Cloud Data Connector
     Language:       PowerShell
     Version:        1.0
     Author:         Microsoft
@@ -7,7 +7,7 @@
     Comment:        Inital Release
 
     DESCRIPTION
-    This Function App calls the VMware Carbon Black Cloud - Endpoint Standard (formerly CB Defense) REST API (https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/rest-api/) to pull the Carbon Black
+    This Function App calls the VMware Carbon Black Cloud REST API (https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/rest-api/) to pull the Carbon Black
     Audit, Notification and Event logs. The response from the CarbonBlack API is recieved in JSON format. This function will build the signature and authorization header
     needed to post the data to the Log Analytics workspace via the HTTP Data Connector API. The Function App will post each log type to their individual tables in Log Analytics, for example,
     CarbonBlackAuditLogs_CL, CarbonBlackNotifications_CL and CarbonBlackEvents_CL.
@@ -211,7 +211,7 @@ function CarbonBlackAPI()
     }
 
     #Converting LogType to array
-    if([string]::IsNullOrWhiteSpace($LogType))
+    if([string]::IsNullOrWhiteSpace($logType))
     {
         if ($SIEMapiKey -eq '<Optional>' -or  $SIEMapiId -eq '<Optional>'  -or [string]::IsNullOrWhitespace($SIEMapiKey) -or  [string]::IsNullOrWhitespace($SIEMapiId))
         {
@@ -221,9 +221,12 @@ function CarbonBlackAPI()
             $LogTypeArr = @("event","audit","alertSIEMAPI")
         }
     }else {
-        $logType = $LogType.Substring(1,$LogType.Length-2)
+        if($logType -like "``[*``]")
+        {
+            $logType = $logType.Substring(1,$logType.Length-2)
+        }
         $logType = $logType -replace """",""
-        $LogTypeArr = $LogType -split ','
+        $LogTypeArr = $logType -split ','
     }
     
 
